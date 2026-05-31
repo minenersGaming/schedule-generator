@@ -10,15 +10,14 @@ export const ScreenSizeButton: FC<{
   setScreenSize: Dispatch<SetStateAction<ScreenSizeType>>
   style: CSSProperties
 }> = ({ title, imgSrc, screenSizeID, setScreenSize, style, darkMode }) => {
-  
   const textColor = darkMode ? "text-white" : "text-black"
 
   return (
     <button onClick={() => setScreenSize(screenSizeID)} className="flex flex-col gap-2">
       <div style={style} className="rounded-md border border-gray-300 transition-colors">
-        <Image width={250} height={250} className="rounded-md" src={imgSrc} alt={""}/>
+        <Image width={250} height={250} className="rounded-md" src={imgSrc} alt={""} />
       </div>
       <p className={`${textColor}`}>{title}</p>
     </button>
   )
-} 
+}

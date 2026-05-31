@@ -47,7 +47,7 @@ const PageTab: FC<{
     <div>
       <div className="relative mt-3 mb-6 rounded-lg ">
         <div className="mx-auto">
-          <div className="grid grid-cols-2 items-center justify-center rounded-lg border border-gray-300">
+          <div className="grid grid-cols-2 items-center justify-center overflow-hidden rounded-lg border border-gray-300">
             <button
               type="button"
               onClick={() => {

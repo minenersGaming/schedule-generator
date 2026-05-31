@@ -39,5 +39,17 @@ export const BackgroundDecorations: Record<string, BackgroundTheme> = {
   bloomandbasket: {
     name: "Bloom and Basket",
     value: "bloomandbasket",
-  }
+  },
+  starlightexpress: {
+    name: "Starlight Express",
+    value: "starlightexpress",
+  },
+  boulangerie: {
+    name: "Boulangerie",
+    value: "boulangerie",
+  },
+  thecastleofcountlesslegacies: {
+    name: "The Castle of Countless Legacies",
+    value: "thecastleofcountlesslegacies",
+  },
 }
