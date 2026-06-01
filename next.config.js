@@ -16,6 +16,7 @@ module.exports = {
     if (!isServer) {
       config.resolve.fallback.fs = false
     }
+
     // copy files you're interested in
     if (!dev) {
       config.plugins.push(
