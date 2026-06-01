@@ -1,13 +1,35 @@
-import puppeteer from "puppeteer"
+import chrome from "chrome-aws-lambda"
 
 export default async function screenshot(url: string, width: number = 2388, height: number = 1768) {
-// export default async function screenshot(url: string, width: number = 2700, height: number = 1886) {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox']
-  })
-  const page = await browser.newPage()
-  await page.setViewport({ width, height })
-  await page.goto(url, { waitUntil: "networkidle2" })
-  return await page.screenshot({ type: "jpeg" })
+  const isServerless = !!process.env.VERCEL || !!process.env.AWS_LAMBDA_FUNCTION_NAME
+
+  if (isServerless) {
+    const puppeteer = await import("puppeteer-core")
+    const executablePath = (await chrome.executablePath) || undefined
+    const browser = await puppeteer.launch({
+      args: chrome.args || ["--no-sandbox", "--disable-setuid-sandbox"],
+      defaultViewport: { width, height },
+      executablePath,
+      headless: chrome.headless ?? true,
+      ignoreHTTPSErrors: true,
+    })
+
+    const page = await browser.newPage()
+    await page.goto(url, { waitUntil: "networkidle2" })
+    const buffer = await page.screenshot({ type: "jpeg" })
+    await browser.close()
+    return buffer
+  } else {
+    const puppeteer = await import("puppeteer")
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      defaultViewport: { width, height },
+    })
+    const page = await browser.newPage()
+    await page.goto(url, { waitUntil: "networkidle2" })
+    const buffer = await page.screenshot({ type: "jpeg" })
+    await browser.close()
+    return buffer
+  }
 }
