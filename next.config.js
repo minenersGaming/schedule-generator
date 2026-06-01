@@ -4,7 +4,9 @@ const CopyPlugin = require("copy-webpack-plugin")
 
 module.exports = {
   reactStrictMode: true,
-  turbopack: {},
+  turbopack: {
+    root: __dirname,
+  },
   /** OUTDATED: unnecessary for next.js v13 (Jul 2025; TUCMC 68)
     future: {
     webpack5: true,

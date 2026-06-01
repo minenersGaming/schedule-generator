@@ -1,6 +1,10 @@
-import { MutableRefObject, useEffect, useState, RefObject } from "react"
+import { useEffect, useState, RefObject } from "react"
 
-export const useDetectOutside = (ref: RefObject<HTMLElement | null>, dep: boolean, callback: () => void) => {
+export const useDetectOutside = <T extends HTMLElement>(
+  ref: RefObject<T | null>,
+  dep: boolean,
+  callback: () => void
+) => {
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (ref.current && !ref.current.contains(event.target as Node | null) && dep) {

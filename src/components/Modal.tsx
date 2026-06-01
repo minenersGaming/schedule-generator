@@ -1,10 +1,22 @@
 import { motion } from "framer-motion"
 import classnames from "classnames"
 import { useDetectOutside } from "@utils/document"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, ReactNode, RefObject } from "react"
+
+interface ModalProps {
+  children?: ReactNode
+  overlayClassName?: string
+  className?: string
+  TriggerRef?: RefObject<HTMLElement> | null
+  CloseID?: string
+  TriggerDep?: { dep?: boolean; revert?: () => void } | null
+  CloseDep?: { dep?: boolean; revert?: () => void } | null
+  closeClickOutside?: boolean
+  ToggleDep?: boolean | null
+  reloadChildren?: boolean
+}
 
 const Modal = ({
-  // @ts-ignore
   children,
   overlayClassName = "",
   className = "",
@@ -15,10 +27,10 @@ const Modal = ({
   closeClickOutside = true,
   ToggleDep = null,
   reloadChildren = false,
-}) => {
+}: ModalProps) => {
   const [modalState, setModalState] = useState({ comm: false, hide: true })
   const [prevent, setPrevent] = useState(true)
-  const panel = useRef<HTMLDivElement | null>(null)
+  const panel = useRef<HTMLDivElement>(null)
 
   const trigger = () => {
     setModalState((prevState) => ({ comm: !prevState.comm, hide: false }))
