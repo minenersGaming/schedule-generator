@@ -1,4 +1,4 @@
-import "@styles/tailwind.scss"
+import "@styles/tailwind.css"
 import "@styles/styles.scss"
 import type { AppProps } from "next/app"
 import { AuthProvider } from "tucmc-auth"

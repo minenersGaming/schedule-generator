@@ -18,7 +18,7 @@ const Modal = ({
 }) => {
   const [modalState, setModalState] = useState({ comm: false, hide: true })
   const [prevent, setPrevent] = useState(true)
-  const panel = useRef(null)
+  const panel = useRef<HTMLDivElement | null>(null)
 
   const trigger = () => {
     setModalState((prevState) => ({ comm: !prevState.comm, hide: false }))

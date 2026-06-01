@@ -1,13 +1,13 @@
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { FC } from "react"
+import { FC, ReactNode } from "react"
 
-export const DescribeRoute: FC<{ title: string; description: string; imgURL: string }> = ({
-  title,
-  description,
-  imgURL,
-  children,
-}) => {
+export const DescribeRoute: FC<{
+  title: string
+  description: string
+  imgURL: string
+  children?: ReactNode
+}> = ({ title, description, imgURL, children }) => {
   const router = useRouter()
 
   return (
@@ -35,7 +35,6 @@ export const DescribeRoute: FC<{ title: string; description: string; imgURL: str
         {/* Color Tags*/}
         <meta name="theme-color" content="#ED87D2" media="(prefers-color-scheme: light)" />
         <meta name="theme-color" content="#252424" media="(prefers-color-scheme: dark)" />
-
       </Head>
       {children}
     </>

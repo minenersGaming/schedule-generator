@@ -3,7 +3,7 @@
 import { CheckIcon, ExclamationIcon } from "@heroicons/react/solid"
 import classNames from "classnames"
 import { AnimatePresence, motion } from "framer-motion"
-import { createContext, FC, useContext, useState } from "react"
+import { createContext, FC, useContext, useState, ReactNode } from "react"
 
 interface IToastContext {
   setToast: (type: "error" | "success", message: string) => void
@@ -27,7 +27,7 @@ function getStyle(type: "error" | "success") {
   }
 }
 
-export const ToastProvider: FC = ({ children }) => {
+export const ToastProvider: FC<{ children?: ReactNode }> = ({ children }) => {
   const toast = useProvideToast()
 
   return (
