@@ -208,7 +208,7 @@ export const DefaultTheme: Record<string, ColorTheme> = {
     c5: hexToRgbA("#70D7FF"),
   },
   Boulangerie: {
-    name: "Boulangerie",
+    name: "La Pâtisserie",
     bg: hexToRgbA("#FFF6D6"),
     t1: hexToRgbA("#E05B77"),
     t2: hexToRgbA("#E05B77"),

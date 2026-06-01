@@ -45,7 +45,7 @@ export const BackgroundDecorations: Record<string, BackgroundTheme> = {
     value: "starlightexpress",
   },
   boulangerie: {
-    name: "Boulangerie",
+    name: "La Pâtisserie",
     value: "boulangerie",
   },
   thecastleofcountlesslegacies: {
